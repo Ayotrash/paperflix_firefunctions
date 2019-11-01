@@ -66,3 +66,4 @@ node_modules/
 key.json
 .vscode
 paperflix-firebase-key.json
+node_modules/
