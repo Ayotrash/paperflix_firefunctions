@@ -12,4 +12,4 @@ admin.initializeApp(firebaseConfig);
 
 const REGISTER = require('./src/register');
 
-exports.register = functions.https.onRequest(REGISTER);
+exports.v1_auth = functions.https.onRequest(REGISTER);
