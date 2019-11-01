@@ -2,6 +2,8 @@
 
 ## Setup & Commands
 
+> For developer only.
+
 #### 1. Download the repository
 Just choose some folder on your terminal/shell to put this project. And then run this command:
 ```
@@ -43,3 +45,87 @@ g. Run in your terminal:
 
 > firebase emulators:start
 ```
+
+***
+
+## HTTP Status Code
+You can see the **responsers code** from the our status code at the `./nimbly-api/functions/src/helpers/responsers.js`.
+
+HTTP Code | Description | Object
+----------|-------------|-------
+200 | Success GET | `success_OK(message, data)`
+201 | Success POST | `success_created(message, data)`
+202 | Success PUT | `success_accepted(message, data)`
+204 | Success NO CONTENT | `success_no_content(message, data)`
+400 | Bad Request | `client_error_bad_request(message)`
+401 | Token is not provided | `client_error_unauthorized(message)`
+403 | Forbidden | `client_error_forbidden(message)`
+404 | Not Found | `client_error_not_found(message)`
+405 | Not Allowed | `client_error_not_allowed(message)`
+500 | Internal Server Error | `server_error_internal(message)`
+501 | Not Implemented Server Error | `server_error_not_implemented(message)`
+
+***
+
+## Authentication
+
+> Endpoints for manage authentication in Paperflix.
+
+#### Authentication Services
+No | Name | HTTP Method | HTTP Requests | HTTP Code
+---|------|-------------|---------------|----------
+1 | Create User | POST | /v1_auth/register | 201, 403, 405, 500
+
+#### 1. Register
+**Production Endpoint:** `https://us-central1-paperflix-company.cloudfunctions.net/v1_auth/register`
+
+**Development Endpoint:** `http://localhost:5000/paperflix-company/us-central1/v1_auth/register`
+
+**Token Required:** No
+
+**Description:** No description yet.
+
+```javascript
+{
+  "firstname": your_firstname, //required
+  "lastname": your_lastname, //required
+  "email": your_email, //required
+  "password": your_password, //required
+  "avatar": your_photoURL, // optional
+  "gender": your_gender, //required || enum["male" or "female"]
+  "deviceInfo": {
+    all_device_info_objects // required
+  },
+}
+```
+
+**Success Response**
+```
+{
+  "statusCode": 201,
+  "error": false,
+  "message": "Success create Paperflix account. Please open your email to confirmation your account.",
+  "data": {
+      "id": "duuQVHqOoS918H2bbogR"
+  }
+}    
+```
+
+**Error Response**
+```
+// Required not filled.
+{
+    "statusCode": 500,
+    "error": true,
+    "message": "Register failed, email cannot be empty."
+}
+
+// Email has been exists.
+{
+    "statusCode": 405,
+    "error": true,
+    "message": "Email ${email} has already taken by other user."
+}
+```
+
+***
