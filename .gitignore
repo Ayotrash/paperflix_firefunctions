@@ -65,3 +65,4 @@ node_modules/
 .env
 key.json
 .vscode
+paperflix-firebase-key.json
