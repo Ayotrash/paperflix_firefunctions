@@ -74,7 +74,7 @@ HTTP Code | Description | Object
 #### Authentication Services
 No | Name | HTTP Method | HTTP Requests | HTTP Code
 ---|------|-------------|---------------|----------
-1 | Create User | POST | /v1_auth/register | 201, 403, 405, 500
+1 | REGISTER | POST | /v1_auth/register | 201, 403, 405, 500
 
 #### 1. Register
 **Production Endpoint:** `https://us-central1-paperflix-company.cloudfunctions.net/v1_auth/register`
