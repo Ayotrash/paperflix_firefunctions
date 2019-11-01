@@ -93,7 +93,7 @@ No | Name | HTTP Method | HTTP Requests | HTTP Code
   "password": your_password, //required
   "avatar": your_photoURL, // optional
   "gender": your_gender, //required || enum["male" or "female"]
-  "deviceInfo": {
+  "device_info": {
     all_device_info_objects // required
   },
 }
