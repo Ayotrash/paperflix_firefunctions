@@ -42,8 +42,6 @@ exports.register = body => {
   }
 
   const setupData = payload => {
-    let hashingPassword = bcrypt.hashSync(payload.password, 10)
-
     let dataPayload = {
       firstname: payload.firstname,
       lastname: payload.lastname,
@@ -51,7 +49,7 @@ exports.register = body => {
       gender: payload.gender,
       avatar: !payload.avatar ? null : payload.avatar,
       device_info: !payload.device_info ? null : payload.device_info,
-      password: hashingPassword,
+      password: payload.password,
       is_verified: false,
       is_active: true,
       phone: null,
